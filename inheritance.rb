@@ -13,6 +13,10 @@ class Student < Member
         super full_name
         @about = about
     end
+
+    def print(index)
+        puts "#{index + 1}. #{full_name} - #{about}"
+    end
 end
 
 class Coach < Member
@@ -27,6 +31,10 @@ class Coach < Member
 
     def add_skill(skill)
         skills << skill
+    end
+
+    def print(index)
+        puts "#{index + 1}. #{full_name} - #{skills.join(', ')}"; puts "   #{bio}"
     end
 end
 
@@ -62,13 +70,13 @@ class Workshop
 
     def print_students_details
         puts 'Students'
-        @students.each_with_index { |student, i| puts "#{i + 1}. #{student.full_name} - #{student.about}"}
+        @students.each_with_index { |student, index| student.print(index)}
         puts
     end
 
     def print_coaches_details
         puts 'Coaches'
-        @coaches.each_with_index { |coach, i| puts "#{i + 1}. #{coach.full_name} - #{coach.skills.join(', ')}"; puts "   #{coach.bio}"}
+        @coaches.each_with_index { |coach, index| coach.print(index)}
         puts
     end 
 end 
